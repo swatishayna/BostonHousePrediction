@@ -1,7 +1,7 @@
 import streamlit as st
 import pickle
 import numpy as np
-from sklearn.preprocessing import PolynomialFeatures
+
 
 st.title('BostonHouse Prediction App')
 indus = st.slider('proportion of non-retail business acres per town',min_value = 0.378436	, max_value=3.358290)
