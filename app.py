@@ -1,7 +1,7 @@
 import streamlit as st
 import pickle
 import numpy as np
-
+from sklearn.preprocessing import PolynomialFeatures
 
 st.title('BostonHouse Prediction App')
 indus = st.slider('proportion of non-retail business acres per town',min_value = 0.378436	, max_value=3.358290)
@@ -23,7 +23,12 @@ if submit:
     #scaling the input values
     scaling= pickle.load(open('boston_scaler.pickle', 'rb'))
     input_scaled = scaling.transform([input_list])
-    input = np.array(input_scaled).reshape(1,-1)
+
+    #converting input values as per polynomial features created with degree 2
+    poly_values = pickle.load(open('boston_polyfeature.pickle', 'rb'))
+    input_scaled_poly = poly_values.transform(input_scaled)
+
+    input = np.array(input_scaled_poly).reshape(1,-1)
     
     #loading the stored model for prediction
     model = pickle.load(open('boston.pickle', 'rb'))
