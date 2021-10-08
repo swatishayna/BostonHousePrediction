@@ -27,7 +27,7 @@ if submit:
     #converting input values as per polynomial features created with degree 2
     poly_values = pickle.load(open('boston_polyfeature.pickle', 'rb'))
     input_scaled_poly = poly_values.transform(input_scaled)
-    poly_values.
+    
     input = np.array(input_scaled_poly).reshape(1,-1)
     
     #loading the stored model for prediction
